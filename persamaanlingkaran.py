@@ -5,7 +5,7 @@ def persamaan_lingkaran(a, b, r):
     # Menghasilkan persamaan lingkaran
     return f"(x - {a})^2 + (y - {b})^2 = {r**2}"
 
-def draw_circle(a, b, r):
+def draw_circle(a, b, r, persamaan):
     # Membuat data untuk lingkaran
     theta = np.linspace(0, 2 * np.pi, 100)  # Sudut dari 0 hingga 2π
     x = a + r * np.cos(theta)  # Koordinat x
@@ -17,6 +17,9 @@ def draw_circle(a, b, r):
     plt.scatter(a, b, color='red')  # Titik pusat
     plt.text(a, b, f' Pusat({a}, {b})', fontsize=12, verticalalignment='bottom', horizontalalignment='right')
     
+    # Menambahkan persamaan lingkaran di bawah gambar
+    plt.text(a, b - r - 2, persamaan, fontsize=12, ha='center', va='top', color='blue')
+
     # Mengatur batas dan aspek
     plt.xlim(a - r - 1, a + r + 1)
     plt.ylim(b - r - 1, b + r + 1)
@@ -38,4 +41,4 @@ persamaan = persamaan_lingkaran(a, b, r)
 print("Persamaan lingkaran:", persamaan)
 
 # Menggambar lingkaran
-draw_circle(a, b, r)
+draw_circle(a, b, r, persamaan)
